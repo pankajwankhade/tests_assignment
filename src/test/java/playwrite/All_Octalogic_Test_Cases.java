@@ -69,8 +69,25 @@ public class All_Octalogic_Test_Cases {
 		boolean card= page.locator("//button[text()='**** **** **** 1234']").isVisible();
 		//System.out.println(card);
 		assertEquals(paymentMethod,card);
+
 	}
 
+	@Test
+	@Order(2)
+	void searchOrder() {
+		// Navigate to the order list
+		page.click("text=Order");
+		page.click("text=List");
+
+		// Perform a search
+		page.fill("//input[@placeholder='Search customer or order number...']","cor");
+
+		// Validate the search results
+		Locator resultRow = page.locator("text=Cortez Herring");
+		assertThat(resultRow).isVisible();
+		assertThat(page.locator("//tbody/tr[@class='MuiTableRow-root MuiTableRow-hover css-1goe4p7']")).hasCount(1);
+
+	}
 
 }
 
