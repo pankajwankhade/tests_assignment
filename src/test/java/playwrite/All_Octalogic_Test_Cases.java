@@ -88,6 +88,27 @@ public class All_Octalogic_Test_Cases {
 		assertThat(page.locator("//tbody/tr[@class='MuiTableRow-root MuiTableRow-hover css-1goe4p7']")).hasCount(1);
 
 	}
+	@Test
+	@Order(3)
+	void filterJobs() {
+
+		// Navigate to the job list
+		page.click("text=Job");
+		page.click("text=List");
+
+		// Open the filters panel
+		page.click("text=Filters");
+
+		// Select 'On Demand' employment type
+		Locator onDemandOption = page.locator("//span[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-30smqk']").nth(2);
+		onDemandOption.click();
+		// Dismiss the right sidebar
+		page.click("//*[@class='MuiBox-root css-hpkoqi']/button[2]");
+
+		// Validate the job filter
+		assertThat(page.locator("//*[text()='On demand']").nth(1)).containsText("On demand");
+
+ }
 
 }
 
