@@ -28,7 +28,7 @@ public class All_Octalogic_Test_Cases {
 	@BeforeEach
 	void setUp() {
 		browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-		BrowserContext context = browser.newContext(new Browser.NewContextOptions().setViewportSize(1280,768));
+		BrowserContext context = browser.newContext(new Browser.NewContextOptions().setViewportSize(1330,700));
 		page = context.newPage();
 		// Navigate to the login page
 		page.navigate("https://minimals.cc/");
@@ -108,7 +108,26 @@ public class All_Octalogic_Test_Cases {
 		// Validate the job filter
 		assertThat(page.locator("//*[text()='On demand']").nth(1)).containsText("On demand");
 
- }
+	}
+	@Test
+	@Order(4)
+	void sendChatMessage() {
+		// Navigate to the chat
+		page.click("text=Chat");
+
+		// Select the chat with 'Deja Brady'
+		page.click("//span[text()='Deja Brady']");
+
+		// Send the message
+		page.fill("input[name=chat-message]", "Hello, how are you?");
+		page.keyboard().press("Enter");
+
+		// Validate the message was sent
+		assertThat(page.locator("//div[text()='Hello, how are you?']")).isVisible();
+
+
+
+	}
 
 }
 

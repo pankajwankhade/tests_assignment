@@ -16,10 +16,10 @@ public class UpdateBillingInformation {
 	public static void main(String [] args) {    
 		Playwright playwright = Playwright.create();
 		Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
-		BrowserContext context = browser.newContext(new Browser.NewContextOptions().setViewportSize(1280,768));
-	Page page = context.newPage();
+		BrowserContext context = browser.newContext(new Browser.NewContextOptions().setViewportSize(1330,700));
+		Page page = context.newPage();
 		page.navigate("https://minimals.cc/");
-	page.click("//a[text()='Sign in']");
+		page.click("//a[text()='Sign in']");
 		page.fill("input[name=email]", "demo@minimals.cc");
 		page.fill("input[name=password]", "@demo1");
 		page.click("button[type=submit]");	
