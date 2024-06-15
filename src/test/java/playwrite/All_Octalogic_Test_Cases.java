@@ -125,6 +125,24 @@ public class All_Octalogic_Test_Cases {
 		// Validate the message was sent
 		assertThat(page.locator("//div[text()='Hello, how are you?']")).isVisible();
 
+	}
+
+	@Test
+	@Order(5)
+	void deleteFiles() {
+
+		// Navigate to the file manager
+		page.click("text=File Manager");
+
+		// Select all items
+		page.click("input[type=checkbox]");
+
+		// Initiate delete action
+		page.click("button[aria-label=Delete]");
+		page.click("//button[text()='Delete']");
+
+		// Validate all items are deleted
+		assertThat(page.locator("text=No data")).isVisible();
 
 
 	}
