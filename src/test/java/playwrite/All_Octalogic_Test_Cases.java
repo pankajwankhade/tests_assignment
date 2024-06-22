@@ -100,10 +100,13 @@ public class All_Octalogic_Test_Cases {
 		page.click("text=Filters");
 
 		// Select 'On Demand' employment type
-		Locator onDemandOption = page.locator("//span[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-30smqk']").nth(2);
+		Locator onDemandOption = page.locator("//*[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-z5wvf2'][text()='On demand']");
 		onDemandOption.click();
 		// Dismiss the right sidebar
 		page.click("//*[@class='MuiBox-root css-hpkoqi']/button[2]");
+
+		// Wait for 2 seconds
+		page.waitForTimeout(2000);
 
 		// Validate the job filter
 		assertThat(page.locator("//*[text()='On demand']").nth(1)).containsText("On demand");
@@ -121,6 +124,10 @@ public class All_Octalogic_Test_Cases {
 		// Send the message
 		page.fill("input[name=chat-message]", "Hello, how are you?");
 		page.keyboard().press("Enter");
+
+		// Wait for 2 seconds
+		page.waitForTimeout(2000);
+
 
 		// Validate the message was sent
 		assertThat(page.locator("//div[text()='Hello, how are you?']")).isVisible();
@@ -140,6 +147,9 @@ public class All_Octalogic_Test_Cases {
 		// Initiate delete action
 		page.click("button[aria-label=Delete]");
 		page.click("//button[text()='Delete']");
+
+		// Wait for 2 seconds
+		page.waitForTimeout(2000);
 
 		// Validate all items are deleted
 		assertThat(page.locator("text=No data")).isVisible();

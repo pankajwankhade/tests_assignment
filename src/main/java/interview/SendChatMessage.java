@@ -26,7 +26,7 @@ public class SendChatMessage {
 
 		// Select the chat with 'Deja Brady'
 		page.click("//span[text()='Deja Brady']");
-
+  
 		// Send the message
 		page.fill("input[name=chat-message]", "Hello, how are you?");
 		page.keyboard().press("Enter");

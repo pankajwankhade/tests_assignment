@@ -30,7 +30,7 @@ public class FilterJobs {
 		page.click("text=Filters");
 
 		// Select 'On Demand' employment type
-		Locator onDemandOption = page.locator("//span[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-30smqk']").nth(2);
+		Locator onDemandOption = page.locator("//*[@class='MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-z5wvf2'][text()='On demand']");
 		onDemandOption.click();
 		// Dismiss the right sidebar
 		page.click("//*[@class='MuiBox-root css-hpkoqi']/button[2]");
